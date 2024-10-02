@@ -6,9 +6,10 @@ import configDatabase from '../config/database';
 
 // Importa o modelo de usuário que foi definido anteriormente
 import User from '../app/models/User';
+import Product from "../app/models/Products";
 
 // Cria um array para armazenar todos os modelos que você deseja inicializar
-const models = [User];
+const models = [User, Product];
 
 // Classe que gerencia a conexão com o banco de dados
 class Database {
@@ -29,3 +30,4 @@ class Database {
 
 // Exporta a instância da classe Database
 export default new Database();
+    
