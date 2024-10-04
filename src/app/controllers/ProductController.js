@@ -25,8 +25,6 @@ class ProductController{
             path
         })
 
-        console.log(product.url)
-
         return res
         .status(201)
         .json({product})
@@ -34,6 +32,8 @@ class ProductController{
 
     async index(req,res){
         const products = await Product.findAll()
+
+        console.log({message: req.userId})
 
         return res.json(products)
     }

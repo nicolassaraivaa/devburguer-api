@@ -7,9 +7,11 @@ import configDatabase from '../config/database';
 // Importa o modelo de usuário que foi definido anteriormente
 import User from '../app/models/User';
 import Product from "../app/models/Products";
+import Category from "../app/models/Category";
+
 
 // Cria um array para armazenar todos os modelos que você deseja inicializar
-const models = [User, Product];
+const models = [User, Product, Category];
 
 // Classe que gerencia a conexão com o banco de dados
 class Database {
@@ -24,7 +26,10 @@ class Database {
         this.connection = new Sequelize(configDatabase);
 
         // Para cada modelo no array, inicializa o modelo com a conexão do banco de dados
-        models.map(model => model.init(this.connection));
+        models.map(model => model.init(this.connection))
+        .map(
+            (model) => model.associate && model.associate(this.connection.models)
+        )
     }
 }
 

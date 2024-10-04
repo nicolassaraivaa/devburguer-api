@@ -1,5 +1,7 @@
 import * as Yup from 'yup' // Importa todas as funcionalidades da biblioteca Yup e as agrupa sob o nome Yup
 import User from '../models/User' // Importa o modelo User
+import jwt from 'jsonwebtoken'
+import authConfig from '../../config/auth'
 
 class SessionController {
     async store(req, res) {
@@ -50,9 +52,16 @@ class SessionController {
         // Retorna os dados do usuário autenticado, sem a senha
         return res.status(201).json({
             id: user.id,
-            name: user.name, 
+            name: user.name,
             email,
-            admin: user.admin
+            admin: user.admin,
+            // Gera um token JWT (JSON Web Token) para autenticação do usuário
+            token: jwt.sign({ id: user.id }, authConfig.secret, {
+                // O payload do token inclui o id do usuário
+                // A chave secreta é usada para assinar o token e garantir sua integridade
+                expiresIn: authConfig.expiresIn // Define o tempo de expiração do token, após o qual será necessário um novo login
+            })
+
         })
     }
 }

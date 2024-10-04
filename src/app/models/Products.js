@@ -10,7 +10,6 @@ class Product extends Model {
                 // Define os atributos do modelo Product
                 name: Sequelize.STRING, // Nome do produto, do tipo STRING
                 price: Sequelize.INTEGER, // Preço do produto, do tipo INTEGER
-                category: Sequelize.STRING, // Categoria do produto, do tipo STRING
                 path: Sequelize.STRING, // Caminho do arquivo do produto, do tipo STRING
                 url: {
                     // Atributo virtual que não é armazenado no banco de dados
@@ -24,8 +23,18 @@ class Product extends Model {
             {
                 sequelize, // Referência ao objeto sequelize para a conexão com o banco de dados
             }
-        );   
+        );
+
+        return this
     }
+
+    static associate(models) {
+        this.belongsTo(models.Category, {
+            foreignKey: 'category_id',
+            as: 'category',
+        })
+    }
+    
 }
 
 // Exporta o modelo Product para uso em outras partes da aplicação
