@@ -1,5 +1,6 @@
 // Importa a biblioteca Sequelize
 import Sequelize from "sequelize";
+import mongoose from "mongoose";
 
 // Importa as configurações do banco de dados a partir do arquivo de configuração
 import configDatabase from '../config/database';
@@ -18,6 +19,7 @@ class Database {
     constructor() {
         // Chama o método de inicialização da conexão
         this.init();
+        this.mongo();
     }
 
     // Método que inicializa a conexão com o banco de dados
@@ -26,10 +28,15 @@ class Database {
         this.connection = new Sequelize(configDatabase);
 
         // Para cada modelo no array, inicializa o modelo com a conexão do banco de dados
-        models.map(model => model.init(this.connection))
+        models
+        .map(model => model.init(this.connection))
         .map(
             (model) => model.associate && model.associate(this.connection.models)
         )
+    }
+    mongo(){
+        this.mongoConnection = mongoose.connect(
+          'mongodb://localhost:27017/devburger')
     }
 }
 

@@ -56,7 +56,7 @@ class SessionController {
             email,
             admin: user.admin,
             // Gera um token JWT (JSON Web Token) para autenticação do usuário
-            token: jwt.sign({ id: user.id }, authConfig.secret, {
+            token: jwt.sign({ id: user.id , name: user.name}, authConfig.secret, {
                 // O payload do token inclui o id do usuário
                 // A chave secreta é usada para assinar o token e garantir sua integridade
                 expiresIn: authConfig.expiresIn // Define o tempo de expiração do token, após o qual será necessário um novo login

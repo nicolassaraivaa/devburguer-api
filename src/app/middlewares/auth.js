@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken' // Importa a biblioteca jsonwebtoken para manipulação de tokens JWT
-import authConfig from '../config/auth' // Importa as configurações de autenticação, como a chave secreta e a expiração do token
+import authConfig from '../../config/auth' // Importa as configurações de autenticação, como a chave secreta e a expiração do token
 
 // Middleware de autenticação
 function authMiddleware(req, res, next) {
@@ -19,8 +19,8 @@ function authMiddleware(req, res, next) {
                 throw new Error() // Se ocorrer um erro na verificação do token, lança um novo erro. 
             }
             req.userId = decoded.id // Se a verificação for bem-sucedida, armazena o ID do usuário decodificado na requisição
+            req.userName = decoded.name
 
-            console.log(req.userId) // Exibe o ID do usuário no console para depuração
         })
     } catch (err) {
         return res.status(401).json({ error: 'token is invalid' }) // Se um erro ocorrer, retorna erro 401 indicando que o token é inválido

@@ -29,13 +29,22 @@ class Product extends Model {
     }
 
     static associate(models) {
+        // Define a associação entre o modelo Product e o modelo Category
         this.belongsTo(models.Category, {
-            foreignKey: 'category_id',
-            as: 'category',
+            foreignKey: 'category_id', // Define a chave estrangeira 'category_id' que referencia a tabela 'categories'
+            as: 'category', // Nome da associação, permitindo referir-se à categoria como 'category' em consultas
         })
     }
-    
+
 }
 
 // Exporta o modelo Product para uso em outras partes da aplicação
 export default Product;
+
+// Explicação detalhada:
+// 1. `belongsTo` estabelece uma relação de "pertence a", indicando que cada produto pertence a UMA categoria específica.
+// 2. A chave estrangeira 'category_id' no modelo 'Product' é um campo que armazena o 'id' da categoria à qual o produto pertence.
+// 3. O campo 'category_id' só pode conter um único valor por produto, ou seja, um produto só pode estar associado a uma categoria por vez.
+// 4. O alias 'category' define o nome da associação. Isso significa que, em consultas do Sequelize, você pode usar 'category' para se referir à categoria associada ao produto.
+// 5. Essa configuração impede que um produto tenha duas categorias simultâneas, já que o 'category_id' é um campo único no banco de dados, permitindo apenas uma associação por produto.
+// 6. Se fosse necessário que um produto tivesse múltiplas categorias, seria necessário usar uma relação de "muitos para muitos" com uma tabela intermediária.
