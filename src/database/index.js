@@ -30,9 +30,8 @@ class Database {
         // Para cada modelo no array, inicializa o modelo com a conexão do banco de dados
         models
         .map(model => model.init(this.connection))
-        .map(
-            (model) => model.associate && model.associate(this.connection.models)
-        )
+        .map((model) => model.associate && model.associate(this.connection.models))
+        
     }
     mongo(){
         this.mongoConnection = mongoose.connect(

@@ -31,6 +31,8 @@ class App {
         // Quando um usuário acessa a URL '/products-file/nome-do-arquivo', o servidor irá
         // procurar esse arquivo dentro da pasta 'uploads' e retorná-lo para o usuário.
         this.app.use('/products-file', express.static(resolve(__dirname, '..', 'uploads')))
+
+        this.app.use('/category-file', express.static(resolve(__dirname, '..', 'uploads')))
     }
 
     // Método para definir as rotas da aplicação

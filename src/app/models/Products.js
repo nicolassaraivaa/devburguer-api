@@ -11,6 +11,7 @@ class Product extends Model {
                 name: Sequelize.STRING, // Nome do produto, do tipo STRING
                 price: Sequelize.INTEGER, // Preço do produto, do tipo INTEGER
                 path: Sequelize.STRING, // Caminho do arquivo do produto, do tipo STRING
+                offer: Sequelize.BOOLEAN,
                 url: {
                     // Atributo virtual que não é armazenado no banco de dados
                     type: Sequelize.VIRTUAL,

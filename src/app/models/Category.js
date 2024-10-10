@@ -7,6 +7,15 @@ class Category extends Model {
         super.init(
             {
                 name: Sequelize.STRING,  
+                path: Sequelize.STRING,
+                url: {
+                    // Atributo virtual que não é armazenado no banco de dados
+                    type: Sequelize.VIRTUAL,
+                    get() {
+                        // Retorna a URL completa do arquivo baseado no caminho (path)
+                        return `http://localhost:3001/category-file/${this.path}`;
+                    }
+                }
             },
             {
                 sequelize, // Referência ao objeto sequelize para a conexão com o banco de dados
