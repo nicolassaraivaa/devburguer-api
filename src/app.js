@@ -9,6 +9,7 @@ import routes from './routes'
 
 // Importa e inicializa a conexão com o banco de dados
 import './database'
+import cors from 'cors'
 
 // Define a classe App para encapsular a configuração da aplicação
 class App {
@@ -16,6 +17,7 @@ class App {
         // Inicializa a aplicação express
         this.app = express()
 
+        this.app.use(cors())
         // Chama o método para configurar os middlewares
         this.middlewares()
         // Chama o método para configurar as rotas
