@@ -1,0 +1,3 @@
+export default{
+    key: 'sk_test_51QDTdDEFeh1xqcXXuOkjqu2eAnEGYUkw2K1AphUBUkeE3BagdVSY6sIZ4aazZ1WeBZiM4hOK6NWm8Lz26kd8Ma8S00SdkvrfvJ'
+}
