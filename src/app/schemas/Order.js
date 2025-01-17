@@ -28,6 +28,10 @@ const OrderSchema = new mongoose.Schema({
                 type: Number,  // Tipo de dado: Number
                 required: true,  // Este campo é obrigatório
             },
+            url: {  
+                type: String, 
+                required: true, 
+            },
             category: {  // Categoria do produto
                 type: String,  // Tipo de dado: String
                 required: true,  // Este campo é obrigatório
