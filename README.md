@@ -52,7 +52,7 @@ API para gerenciamento de pedidos, produtos e categorias de um sistema de delive
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/devburguer-api.git
+   gh repo clone nicolassaraivaa/devburguer-api
    cd devburguer-api
 
 2. Instale as dependências:
